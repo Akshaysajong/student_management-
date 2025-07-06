@@ -6,6 +6,9 @@ run the commands
 python manage.py makemigrations
 python manage.py migrate
 
+run the celery
+celery -A core worker --loglevel=info --pool=solo
+
 run the server
 python manage.py runserver
 
