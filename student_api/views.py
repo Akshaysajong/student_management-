@@ -9,7 +9,6 @@ from django.conf import settings
 from .tasks import send_welcome_email, trigger_n8n_webhook
 
 
-
 generator = pipeline('text-generation', model='distilgpt2')
 set_seed(42)
 
@@ -34,7 +33,6 @@ class StudentRegisterView(views.APIView):
             welcome_message = generate_welcome_message(msg)
             print("welcome_message:", welcome_message)
             send_welcome_email.delay(student.id, welcome_message)
-            print('__________________________________________________________________________________________________')
             try:
                 trigger_n8n_webhook.delay(student.id)
             except Exception as e:

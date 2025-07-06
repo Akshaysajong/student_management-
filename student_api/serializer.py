@@ -13,7 +13,6 @@ class StudentSerializer(serializers.ModelSerializer):
             if not re.match(email_regex, value):
                 raise serializers.ValidationError("Invalid email format")
         
-            # Check email uniqueness
             if Student.objects.filter(email=value).exists():
                 raise serializers.ValidationError("Email already registered")
             return value

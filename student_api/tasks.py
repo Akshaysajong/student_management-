@@ -10,11 +10,9 @@ def send_welcome_email(student_id, welcome_message):
         student = Student.objects.get(id=student_id)
         subject = f"Welcome to {student.course}!"
         message = (
-            f"Dear {student.first_name} {student.last_name},\n\n"
-            f"Welcome to your {student.course} course!\n\n"
-            f"{welcome_message}\n\n"
-            f"We're thrilled to have you on board!\n"
-            f"Best regards,\nThe Course Team"
+            f"Dear {student.first_name} {student.last_name},"
+            f"Welcome to your {student.course} course!"
+            f"{welcome_message}"
         )
         send_mail(
             subject=subject,
